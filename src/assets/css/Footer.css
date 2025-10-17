@@ -1,0 +1,229 @@
+:root {
+  --footer-bg: linear-gradient(135deg, #111, #222);
+  --footer-radius: 24px;
+  --footer-padding: clamp(32px, 4vw, 60px);
+  --text-muted: #aaa;
+  --text-light: #fff;
+  --brand-accent: #10b981;
+}
+
+/* ===========================================================
+   Footer Container
+   =========================================================== */
+.footer {
+  background: var(--footer-bg);
+  color: var(--text-light);
+  padding: 0;
+  border-radius: var(--footer-radius) var(--footer-radius) 0 0;
+  margin-top: 100px;
+  transition: all 0.5s ease;
+  border-top: 1px solid #333;
+  overflow: hidden;
+  
+  /* Performance tweaks for smoother animations */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Prevent flicker by ensuring smoother repaint on all children */
+.footer, .footer * {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: var(--footer-padding);
+  gap: 40px;
+}
+
+/* ===========================================================
+   Animation Handling
+   =========================================================== */
+
+/* Triggered once when footer first appears */
+.footer.visible.active-footer {
+  animation: fadeUp 0.6s ease both;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Disable reanimation flicker */
+.footer.active-footer:not(.visible) {
+  animation: none;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================================================
+   Collapsible Sections
+   =========================================================== */
+.collapsible-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.collapsible-content.open {
+  max-height: 500px;
+}
+
+/* ===========================================================
+   Links
+   =========================================================== */
+.footer-link {
+  color: var(--text-muted);
+  display: block;
+  padding: 6px 0;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--text-light);
+  transform: translateX(6px);
+}
+
+/* ===========================================================
+   Newsletter
+   =========================================================== */
+.newsletter-heading {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.newsletter-input-group {
+  display: flex;
+  background: #2a2a2a;
+  border: 1.5px solid #3a3a3a;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-input-group:focus-within {
+  border-color: var(--brand-accent);
+}
+
+.newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 14px 16px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.arrow-btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.arrow-btn.loading {
+  background: #999;
+  color: #fff;
+  cursor: wait;
+}
+
+.arrow-btn.success {
+  background: var(--brand-accent);
+  color: #fff;
+}
+
+.arrow-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.success-message {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--brand-accent);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================================================
+   Bottom Section
+   =========================================================== */
+.footer-bottom {
+  text-align: center;
+  padding: 16px;
+  background: #181818;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* ===========================================================
+   Responsive
+   =========================================================== */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    padding: clamp(24px, 5vw, 40px);
+  }
+
+  .footer-right {
+    width: 100%;
+  }
+
+  .collapsible-title {
+    font-size: 1.1rem;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+  }
+
+  .chevron {
+    font-size: 1.5rem;
+    color: #aaa;
+  }
+
+  .newsletter-heading {
+    text-align: center;
+  }
+
+  .newsletter-input-group {
+    max-width: 100%;
+  }
+}
+
+

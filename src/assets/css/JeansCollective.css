@@ -1,0 +1,187 @@
+/* ===============================
+   Base Styles
+   =============================== */
+.jeans-container {
+  text-align: center;
+  background-color: #fff;
+  padding: 3rem 2rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ===============================
+   Title with Highlight
+   =============================== */
+.jeans-title {
+  font-size: 3rem;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  color: #111;
+  margin-bottom: 1rem;
+}
+
+.jeans-title::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  right: -15px;
+  bottom: 8px;
+  height: 18px;
+  background-color: #ffd9b3;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Tagline */
+.jeans-tagline {
+  color: #333;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.5;
+}
+
+/* ===============================
+   Gallery Layout (Desktop)
+   =============================== */
+.jeans-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Thumbnails */
+.jeans-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jeans-thumb {
+  width: 90px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border 0.2s ease, transform 0.2s ease;
+}
+
+.jeans-thumb:hover {
+  border-color: #aaa;
+  transform: scale(1.03);
+}
+
+.jeans-thumb.active {
+  border-color: #000;
+}
+
+/* Main Image */
+.jeans-main-image {
+  background-color: #e5e5e5;
+  padding: 1.5rem;
+  border-radius: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jeans-main-image img {
+  max-height: 500px;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.jeans-main-image img:hover {
+  transform: scale(1.02);
+}
+
+/* ===============================
+   Mobile Responsive Design
+   =============================== */
+@media (max-width: 768px) {
+  .jeans-container {
+    padding: 2rem 1rem;
+  }
+
+  .jeans-title {
+    font-size: 2.2rem;
+  }
+
+  .jeans-title::before {
+    bottom: 4px;
+    height: 14px;
+  }
+
+  .jeans-tagline {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
+
+  /* Stack gallery vertically */
+  .jeans-gallery {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  /* Make thumbnails a horizontal scroll list */
+  .jeans-thumbnails {
+    flex-direction: row;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    justify-content: center;
+    scrollbar-width: none; /* hide scrollbar on Firefox */
+  }
+
+  .jeans-thumbnails::-webkit-scrollbar {
+    display: none; /* hide scrollbar on Chrome/Safari */
+  }
+
+  .jeans-thumb {
+    width: 70px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+
+  .jeans-main-image {
+    width: 100%;
+    max-width: 420px;
+    padding: 1rem;
+  }
+
+  .jeans-main-image img {
+    max-height: 350px;
+  }
+}
+
+/* ===============================
+   Extra Small Screens
+   =============================== */
+@media (max-width: 480px) {
+  .jeans-title {
+    font-size: 1.8rem;
+  }
+
+  .jeans-tagline {
+    font-size: 0.95rem;
+  }
+
+  .jeans-main-image {
+    padding: 0.8rem;
+    border-radius: 14px;
+  }
+
+  .jeans-thumb {
+    width: 60px;
+    height: 90px;
+  }
+}
